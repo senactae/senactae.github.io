@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<curso>
+    <menu>
+        <pagina show="true">
+            <nome>Capítulo 1</nome>
+            <link>index.html</link>
+        </pagina>
+        <pagina show="true">
+            <nome>Capítulo 2</nome>
+            <link>page1.html</link>
+        </pagina>
+        <pagina show="true">
+            <nome>Capítulo 3</nome>
+            <link>page2.html</link>
+        </pagina>
+        <pagina show="true">
+            <nome>Capítulo 4</nome>
+            <link>page3.html</link>
+        </pagina>
+        <pagina show="true">
+            <nome>Capítulo 5</nome>
+            <link>page4.html</link>
+        </pagina>
+        <pagina show="true">
+            <nome>Capítulo 6</nome>
+            <link>page5.html</link>
+        </pagina>
+        <pagina show="true">
+            <nome>Capítulo 7</nome>
+            <link>page6.html</link>
+        </pagina>
+        <pagina show="true">
+            <nome>Capítulo 8</nome>
+            <link>page7.html</link>
+        </pagina>
+        <pagina show="true">
+            <nome>Capítulo 9</nome>
+            <link>page8.html</link>
+        </pagina>
+        <pagina show="true">
+            <nome>Capítulo 10</nome>
+            <link>page9.html</link>
+        </pagina>
+        <pagina show="true">
+            <nome>Capítulo 11</nome>
+            <link>page10.html</link>
+        </pagina>
+        <pagina show="true">
+            <nome>Capítulo 12</nome>
+            <link>page11.html</link>
+        </pagina>
+        <pagina show="false">
+            <nome>Capítulo 13</nome>
+            <link>page12.html</link>
+        </pagina>
+    </menu>
+</curso>

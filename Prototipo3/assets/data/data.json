@@ -1,0 +1,29 @@
+{
+    "curso": {
+		"modulo": "Financeiro e Contábil",
+        "titulo": "PSG:",
+        "logo": "img/logoTransparencia.png",
+		"template": "fc",
+		"cor": "",
+		"conteudo": {
+			"telas":[
+						{
+							"aula": "",
+							"url":"page1.html",
+							"titulo":"cumprimento do programa"
+						},
+						{
+							"aula": "Capítulo 2",
+							"url":"page2.html",
+							"titulo":"cumprimento do programa"
+						},
+						{
+							"aula": "Capítulo 3",
+							"url":"page3.html",
+							"titulo":"cumprimento do programa"
+						}
+					]
+		}
+	}
+}
+

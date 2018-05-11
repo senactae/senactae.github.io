@@ -1,0 +1,590 @@
+<!doctype html>
+<html class="M1">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Programa de Transparência e Unicidade Senac</title>
+    <!-- core -->
+    <link href="assets/plugins/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/plugins/font-awesome-4.6.3/css/fontawesome-all.css" rel="stylesheet" type="text/css">
+    <!-- plugins -->
+    <!-- layout -->
+    <link href="assets/css/default.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/style.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/audio_style.css" rel="stylesheet" type="text/css">
+    <link href="assets/plugins/jwplayer-7.4.4/skins/senac.css" rel="stylesheet" type="text/css">
+
+    <script src="assets/plugins/audiojs/audio.js"></script>
+    <script>
+        audiojs.events.ready(function() {
+            //audiojs.createAll();
+            var as = audiojs.createAll(),
+                audio = as[0],
+                numVolume = $('#volumebar').val() / 100,
+                createdStyle = false;
+
+            // VERIFICA VOLUME
+            audio.setVolume(numVolume);
+            verifyVolume();
+
+            $('#btn-volume').on('click', function() {
+                var status = !audio.element.muted;
+                audio.element.muted = status;
+
+                if (!status) {
+                    $("#volumebar").val(numVolume);
+                } else {
+                    numVolume = $("#volumebar").val();
+                    $("#volumebar").val(0);
+                }
+
+                verifyAudio('clicked');
+            });
+
+            $("#volumebar").on('change', function() {
+                var status = !audio.element.muted;
+
+                if (status)
+                    audio.setVolume($(this).val() / 100);
+                else
+                    audio.element.muted = status;
+                audio.setVolume($(this).val() / 100);
+
+                verifyAudio('changed');
+            });
+
+            function verifyAudio(status) {
+                getVolume = audio.element.volume;
+                muteVolume = audio.element.muted;
+
+                if (getVolume == 0 || muteVolume) {
+                    $('#btn-volume').children('i').removeAttr('class').addClass('ico-volumeMute');
+                } else if (getVolume > 0 && getVolume <= 0.49) {
+                    $('#btn-volume').children('i').removeAttr('class').addClass('ico-volumeMin');
+                } else {
+                    $('#btn-volume').children('i').removeAttr('class').addClass('ico-volumeMax');
+                }
+
+                verifyVolume();
+            }
+
+            function verifyVolume() {
+                var r = document.querySelectorAll('input[type=range]'),
+                    prefs = ['webkit-slider-runnable', 'moz-range'],
+                    styles = [],
+                    l = prefs.length,
+                    n = r.length;
+
+                var getTrackStyleStr = function(el, j) {
+                    var str = '',
+                        min = el.min || 0,
+                        perc = (el.max) ? ~~(100 * (el.value - min) / (el.max - min)) : el.value,
+                        val = perc + '% 100%';
+
+                    for (var i = 0; i < l; i++) {
+                        str += "input[type=range]::-" + prefs[i] + '-track{background-size:' + val + '} ';
+                    }
+
+                    return str;
+                };
+
+                var setDragStyleStr = function(evt) {
+                    var trackStyle = getTrackStyleStr(evt.target, this);
+                    styles[this].textContent = trackStyle;
+                };
+
+                if (!createdStyle) {
+                    createdStyle = true;
+
+                    for (var i = 0; i < n; i++) {
+                        var s = document.createElement('style');
+                        s.id = "estiloAudio";
+                        document.body.appendChild(s);
+                        styles.push(s);
+                        r[i].addEventListener('input', setDragStyleStr.bind(i), false);
+
+                        var str = '';
+                        for (var g = 0; g < l; g++) {
+                            str += "input[type=range]::-" + prefs[g] + '-track{background-size:' + $('#volumebar').val() + '% 100% }';
+                        }
+                        styles[0].textContent = str;
+                    }
+                } else {
+                    //styleTag = document.getElementsByTagName("style");
+                    styleTagID = document.getElementById("estiloAudio");
+                    inputVolume = document.getElementById("volumebar");
+
+                    var trackStyle = getTrackStyleStr(inputVolume, this);
+                    styleTagID.innerHTML = trackStyle;
+                }
+            }
+        });
+
+    </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- topo -->
+    <header>
+        <div class="container">
+            <div class="row linha-header">
+                <div class="col-sm-6 col-xs-6 ">
+                    <img src="assets/img/logoSenac.png" class="img-responsive logoSenac pull-left" />
+                </div>
+                <div class="col-sm-6 col-xs-6 ">
+                    <a href="index.html"><img src="assets/img/logoTransparencia.png" class="img-responsive center-block pull-right" /></a>
+                </div>
+                <!--<div class="col-sm-2 col-xs-2 hidden">
+                    <div class="nav-menu">
+                        <button aria-expanded="false" aria-controls="navigation-list" aria-label="Abrir o menu de navegação" id="navigation-button" class="nav-button" type="button" title="Abrir o menu de navegação">
+                                <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>-->
+            </div>
+            
+        </div>
+    </header>
+    <!-- menu aberto -->
+    <nav role="navigation">
+        <div class="overlayMenu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 mt40">
+                        <img src="assets/img/bt_voltar.png" class="img-responsive pull-right nav-button" />
+                    </div>
+                    <div class="col-xs-4 col-xs-offset-8 col-sm-12 col-sm-offset-0">
+                        <ul class="full-menu pull-right" role="menu" aria-labelledby="dropdownMenu" id="ulMenu"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="modulos">
+        <div class="conteudo">
+            <!-- imagem topo/nome do curso -->
+            <div class="container-fluid">
+                <div class="topo py-xs-10">
+                    <h1></h1>
+                    <h2></h2>
+                </div>
+            </div>
+            <!-- CONTEUDO -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img src="assets/img/img4.png" class="img-responsive mt30 center-block" />
+                    </div>
+                    <div class="col-sm-8 ">
+                        <h4>1.2. Arrecadação da receita compulsória</h4>
+                        <p>O primeiro conteúdo a ser estudado é a <strong>arrecadação da receita compulsória</strong>, que é a <strong>principal fonte de receita</strong> do Senac.</p>
+                        <p>Ela é obtida por meio do <strong>recolhimento mensal</strong> realizado pelas empresas dos setores do comércio de bens, serviços e turismo, juntamente a contribuições previdenciárias. A base legal dessa arrecadação é o <strong>artigo 4º do Decreto-Lei nº 8.621</strong>, de 10 de janeiro de 1946, que dispõe sobre a criação do Senac.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CITACAO -->
+            <div class="container-fluid container-citacao mb0">
+                <div class="container citacao">
+                    <p><span class="aspas-citacao hidden-sm hidden-lg">"</span>Para o custeio dos encargos do Senac, os estabelecimentos comerciais cujas atividades, de acordo com o quadro a que se refere o art. 577 da Consolidaçãodas Leis do Trabalho, estiverem enquadradas nas Federações e Sindicatos coordenados pela Confederação Nacional do Comércio, ficam obrigados ao pagamento mensal de uma contribuição equivalente a um por cento (1%) sobreo montante da remuneração paga à totalidade dos seus empregados. (grifo nosso) <span class="aspas-citacao hidden-sm hidden-lg">"</span></p>
+                    <span>Artigo 4º do Decreto-Lei nº 8.621, de 10 de janeiro de 1946</span>
+                </div>
+            </div>
+
+            <!-- BLOCO VIDEO -->
+            <div class="container-fluid bg-video mb50 mt0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>CARGA HORÁRIA EFETIVA</h4>
+                            <p>Nessa unidade, você compreenderá os principais conceitos relacionados à carga horário efetiva e como é realizado o cálculo da CHE total de um Departamento Regional. Assista a animação e a aula narrada sobre a CHE:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="player2 player">
+                                <div class="player_video"></div>
+                                <div class="player_lista"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM BLOCO VIDEO -->
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>Da receita compulsória bruta do Senac é necessário descontar uma comissão ao órgão arrecadador, estabelecida em 3,5%. Atualmente, a Receita Federal do Brasil é o órgão arrecadador dessa receita compulsória e, ao fazer o repasse para o Senac, já retém os 3,5% de comissão. O Departamento Nacional, por sua vez, desconta dos Departamentos Regionais somente 2% dessa comissão, sendo o restante de sua responsabilidade. Ou seja, a receita que vai para os DRs tem somente 2% de retenção, enquanto o DN arca com o 1,5% restante.</p>
+                    </div>
+                </div>
+                <div class="row mt30 mb30 row-icones">
+                    <div class="col-sm-4">
+                        <img src="assets/img/img1-boxes.png" class="img-responsive center-block">
+                        <p class="text-center ">Departamentos Regionais são descontados em 2%</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="assets/img/img2-boxes.png" class="img-responsive center-block">
+                        <p class="text-center">Desconto de 3,5% de comissão para a Receita Federal</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="assets/img/img3-boxes.png" class="img-responsive center-block">
+                        <p class="text-center">Departamentos Nacionais são descontados em 1,5%</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TABS LATERAL DESKTOP -->
+            <div class="container-fluid tab-lateral pb50 pt50 hidden-xs">
+                <div class="container container-tab">
+                    <div class="row">
+                        <div class="col-sm-4 p0">
+                            <ul class="nav hidden-xs" role="tablist">
+                                <li role="presentation" class="active"><a href="#action5" aria-controls="action5" role="tab" data-toggle="tab">Crescimento gradual<br>do compromisso PSg</a></li>
+                                <li role="presentation" class=""><a href="#action6" aria-controls="action6" role="tab" data-toggle="tab">Compromisso financeiro</a></li>
+                                <li role="presentation" class=""><a href="#action7" aria-controls="action7" role="tab" data-toggle="tab">execução financeira</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-8 p0 ">
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active active-xs" id="action5">
+                                    <div class="row linha-tab  ">
+                                        <div class="container-tabs">
+                                            <div class="col-sm-12 order1">
+                                                <div class="tab-texto">
+                                                    <h3>Crescimento gradual do compromisso PSg</h3>
+                                                    <p>Valores que foram gastos com o PSG desde sua implementação:</p>
+                                                </div>
+                                                <img src="assets/img/img1-tabs-lateral.png" class="img-responsive center-block" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div role="tabpanel" class="tab-pane fade active-xs" id="action6">
+                                    <div class="row linha-tab  ">
+                                        <div class="container-tabs">
+                                            <div class="col-sm-12 order1">
+                                                <div class="tab-texto">
+                                                    <h3>Compromisso financeiro</h3>
+                                                    <p>Valores que foram gastos com o PSG desde sua implementação:</p>
+                                                </div>
+                                                <img src="assets/img/img2-tabs-lateral.png" class="img-responsive center-block" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div role="tabpanel" class="tab-pane fade active-xs" id="action7">
+                                    <div class="row linha-tab  ">
+                                        <div class="container-tabs">
+                                            <div class="col-sm-12 order1">
+                                                <div class="tab-texto">
+                                                    <h3>Execução financeira</h3>
+                                                    <p>Valores que foram gastos com o PSG desde sua implementação:</p>
+                                                </div>
+                                                <img src="assets/img/img3-tabs-lateral.png" class="img-responsive center-block" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM TABS LATERAL DESKTOP-->
+
+            <!-- TABS LATERAL MOBILE -->
+            <div class="bloco-slide-xs hidden-md hidden-lg tabs-tateral-mobile">
+                <div class="container-fluid">
+
+                    <!-- slider mobile 1 -->
+                    <div class="panel-group" id="tab-mobile1" role="tablist" aria-multiselectable="false">
+                        <div class="panel panel-slider">
+                            <div class="panel-tab-mobile" role="tab" id="headingOne">
+                                <a data-toggle="collapse" data-parent="#tab-mobile1" href="#collapse-tabmobile1" aria-expanded="false" aria-controls="collapse-tabmobile1" class="collapsed">
+                                    <h4 class="panel-title">
+                                        <strong>Execução financeira</strong>
+                                        <div class="icone-accordion pull-right">
+                                            <i class="fas fa-angle-double-down"></i>
+                                            <i class="fas fa-angle-double-up"></i>
+                                        </div>
+                                    </h4>
+                                </a>
+                            </div>
+
+                            <div id="collapse-tabmobile1" class="collapse-tab-mobile collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <img src="assets/img/img1-tabs-lateral.png" class="img-responsive" />
+                                <div class="panel-body">
+                                    <p>Na primeira etapa, o Departamento Regional estima sua oferta de cursos para o PSG levando em consideração as projeções de receita compulsória, comprometimento e GMAHA. O Departamento Regional deve realizar essa estimativa para estabelecer o montante de carga horária a ser realizado com o programa</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- fim slider mobile 1 -->
+
+                    <!-- slider mobile 2 -->
+                    <div class="panel-group" id="tab-mobile1" role="tablist" aria-multiselectable="false">
+                        <div class="panel panel-slider">
+                            <div class="panel-tab-mobile" role="tab" id="headingOne">
+                                <a data-toggle="collapse" data-parent="#tab-mobile1" href="#collapse-tabmobile2" aria-expanded="false" aria-controls="collapse-tabmobile2" class="collapsed">
+                                    <h4 class="panel-title">
+                                        <strong>Execução financeira</strong>
+                                        <div class="icone-accordion pull-right">
+                                            <i class="fas fa-angle-double-down"></i>
+                                            <i class="fas fa-angle-double-up"></i>
+                                        </div>
+                                    </h4>
+                                </a>
+                            </div>
+
+                            <div id="collapse-tabmobile2" class="collapse-tab-mobile collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <img src="assets/img/img2-tabs-lateral.png" class="img-responsive" />
+                                <div class="panel-body">
+                                    <p>Na primeira etapa, o Departamento Regional estima sua oferta de cursos para o PSG levando em consideração as projeções de receita compulsória, comprometimento e GMAHA. O Departamento Regional deve realizar essa estimativa para estabelecer o montante de carga horária a ser realizado com o programa</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- fim slider mobile 2 -->
+
+                    <!-- slider mobile 3 -->
+                    <div class="panel-group" id="tab-mobile1" role="tablist" aria-multiselectable="false">
+                        <div class="panel panel-slider">
+                            <div class="panel-tab-mobile" role="tab" id="headingOne">
+                                <a data-toggle="collapse" data-parent="#tab-mobile1" href="#collapse-tabmobile3" aria-expanded="false" aria-controls="collapse-tabmobile3" class="collapsed">
+                                    <h4 class="panel-title">
+                                        <strong>Execução financeira</strong>
+                                        <div class="icone-accordion pull-right">
+                                            <i class="fas fa-angle-double-down"></i>
+                                            <i class="fas fa-angle-double-up"></i>
+                                        </div>
+                                    </h4>
+                                </a>
+                            </div>
+
+                            <div id="collapse-tabmobile3" class="collapse-tab-mobile collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <img src="assets/img/img3-tabs-lateral.png" class="img-responsive" />
+                                <div class="panel-body">
+                                    <p>Na primeira etapa, o Departamento Regional estima sua oferta de cursos para o PSG levando em consideração as projeções de receita compulsória, comprometimento e GMAHA. O Departamento Regional deve realizar essa estimativa para estabelecer o montante de carga horária a ser realizado com o programa</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- fim slider mobile 3 -->
+                </div>
+            </div>
+            <!-- FIM TABS LATERAL MOBILE -->
+
+            <div class="container-fluid bg-calculo ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>Para o cálculo do montante aplicado na gratuidade, precisamos dos seguintes dados:</p>
+                            <ul class="lista">
+                                <li>o GMAHA, para ajudar a identificar o valor efetivamente aplicado no PSG no ano;</li>
+                                <li>A CHE de gratuidade.</li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <img src="assets/img/img5.png" class="img-responsive center-block" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid bg-partes bg-pensar pt30 mt0 mb0">
+                <div class="container">
+                    <div class="titulo-box">
+                        <img src="assets/img/icone-pensar.png" class="img-responsive icone-partes" />
+                        <h3>PARA PENSAR</h3>
+                    </div>
+                    <p>Recomenda-se que os alunos sejam distribuídos preferencialmente em turmas mistas - alunos cujos estudos sejamfinanciados por fontes de recursos diversificadas e alunos do PSG. Entretanto, saiba que também é possível a oferta emturmas destinadas exclusivamente ao PSG.</p>
+                </div>
+            </div>
+
+            <!-- TAB SUPERIOR -->
+            <div class="container-fluid tab-superior ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <ul class="nav nav-tabs hidden-xs" role="tablist">
+                                <li role="presentation" class="active"><a href="#action1" aria-controls="action1" role="tab" data-toggle="tab">gestão</a></li>
+                                <li role="presentation" class="ml30"><a href="#action2" aria-controls="action2" role="tab" data-toggle="tab">investimentos</a></li>
+                                <li role="presentation" class="ml30"><a href="#action3" aria-controls="action3" role="tab" data-toggle="tab">custeio direito</a></li>
+                                <li role="presentation" class="ml30"><a href="#action4" aria-controls="action4" role="tab" data-toggle="tab">custeio indireto</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid bg-tab">
+                    <div class="container  container-tab">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade in active active-xs" id="action1">
+                                        <div class="row linha-tab  ">
+                                            <div class="container-tabs">
+                                                <div class="col-sm-5 col-xs-12 order1">
+                                                    <div class="tab-texto">
+                                                        <h3>Investimentos (despesas de capital,diretas ou indiretas)</h3>
+                                                        <p>Todos os gastos necessários para a aquisição de ativos imobilizados, tais como: a aquisição de recursos instrucionais (lousas, projetores etc.), equipamentos de informática, mobiliário, construção de escolas, entre outros. São gastos fundamentais para a manutenção e a modernização de nossas instalações educacionais e administrativas.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-7 col-xs-12 order2">
+                                                    <div class="tab-image">
+                                                        <img src="assets/img/img1-tab.png" class="img-responsive center-block visible-lg" />
+                                                        <img src="assets/img/img1-tab.png" class="img-responsive center-block visible-md" />
+                                                        <img src="assets/img/img1-tab.png" class="img-responsive center-block hidden-md hidden-lg" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane fade  active-xs" id="action2">
+                                        <div class="row linha-tab  ">
+                                            <div class="container-tabs">
+                                                <div class="col-sm-7 col-xs-12 order2">
+                                                    <div class="tab-image">
+                                                        <img src="assets/img/img2-tab.png" class="img-responsive center-block visible-lg" />
+                                                        <img src="assets/img/img2-tab.png" class="img-responsive center-block visible-md" />
+                                                        <img src="assets/img/img2-tab.png" class="img-responsive center-block hidden-md hidden-lg" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 col-xs-12 order1">
+                                                    <div class="tab-texto">
+                                                        <h3>Proin efficitur velit vel sem dapibus</h3>
+                                                        <p>Morbi bibendum risus in egestas feugiat. Sed vel porttitor risus. Morbi ante lectus, mollis malesuada venenatis vitae, pharetra nec sapien. Nunc elementum viverra leo, vel gravida risus semper at. In convallis aliquet mi, nec ornare mauris efficitur non. Nam aliquam sed orci nec feugiat. Proin scelerisque imperdiet lacus, vel sodales ante faucibus id. Phasellus lobortis blandit justo, nec eleifend lacus feugiat eget. Praesent a justo ac magna lobortis tempus. </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane fade  active-xs" id="action3">
+                                        <div class="row linha-tab  ">
+                                            <div class="container-tabs">
+                                                <div class="col-sm-5 col-xs-12 order1">
+                                                    <div class="tab-texto">
+                                                        <h3>Nam placerat enim ac urna</h3>
+                                                        <p>Maecenas vulputate, velit sollicitudin cursus interdum, ex nisl dictum nulla, non scelerisque dui odio sit amet dolor. Ut ac pellentesque erat. In elit nisi, rutrum a mauris in, imperdiet fringilla lorem. Quisque iaculis erat in mi malesuada rutrum. Mauris non sapien eget magna vulputate lobortis eu eget neque. Nam placerat enim ac urna finibus bibendum. Nullam posuere ex nisi, at mollis ipsum porttitor vitae. Praesent ut nisl in leo dignissim commodo. Mauris iaculis, nulla iaculis posuere convallis.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-7 col-xs-12 order2">
+                                                    <div class="tab-image">
+                                                        <img src="assets/img/img3-tab.png" class="img-responsive center-block visible-lg" />
+                                                        <img src="assets/img/img3-tab.png" class="img-responsive center-block visible-md" />
+                                                        <img src="assets/img/img3-tab.png" class="img-responsive center-block hidden-md hidden-lg" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane fade  active-xs" id="action4">
+                                        <div class="row linha-tab  ">
+                                            <div class="container-tabs">
+                                                <div class="col-sm-7 col-xs-12 order2">
+                                                    <div class="tab-image">
+                                                        <img src="assets/img/img4-tab.png" class="img-responsive center-block visible-lg" />
+                                                        <img src="assets/img/img4-tab.png" class="img-responsive center-block visible-md" />
+                                                        <img src="assets/img/img4-tab.png" class="img-responsive center-block hidden-md hidden-lg" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 col-xs-12 order1">
+                                                    <div class="tab-texto">
+                                                        <h3>Pellentesque ut lacus at enim porttitor</h3>
+                                                        <p>Proin consectetur sapien lacus, vitae placerat ipsum rutrum ac. Etiam condimentum elit eget interdum facilisis. Nunc consequat, tellus lacinia varius facilisis, justo leo imperdiet purus, non malesuada ligula eros nec metus. Nunc vulputate, lectus quis varius tempus, eros velit tincidunt mi, vitae scelerisque nulla augue in nibh. Curabitur ultricies eros at nulla porttitor feugiat. Aenean id risus justo. Sed ornare, orci quis ullamcorper semper, leo mauris consequat risus, ut tempor nisl nunc a tellus. Praesent a ipsum nec ex ultricies efficitur. Duis turpis massa, tempus vitae ullamcorper eget, euismod nec orci. Nullam vel lectus dignissim, eleifend erat vel, molestie tortor. </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM TABS SUPERIOR -->
+
+            <footer>
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a href="">Termos de uso</a> | <a href="">Política de privacidade</a>
+                            <p>©2018 Senac. Todos os direitos reservados.</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="">Catálogo de cursos </a> | <a href="">Perguntas frequentes</a> | <a href="">Suporte</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- core -->
+            <script src="assets/plugins/jquery-1.12.3.min.js"></script>
+            <script src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+            <script src="assets/plugins/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+
+            <!-- plugins -->
+            <script src="assets/plugins/skrollr.min.js"></script>
+            <!--<script src="assets/plugins/jquery.animaCanvas.js"></script>-->
+            <script src="assets/plugins/jquery.waypoints.min.js"></script>
+            <script src="assets/plugins/jwplayer-7.4.4/jwplayer.js"></script>
+            <script src="assets/plugins/videoPlayer.js"></script>
+
+            <script src="assets/scripts/script.js"></script>
+            <script src="assets/scripts/index.js"></script>
+
+            <script>
+                $(document).ready(function(e) {
+                    $('.player2').video_TAE({
+                        id: 'meuVideo',
+                        hd: 'true',
+                        skin: 'senac',
+                        capa: 'senac.png',
+                        video: 'Senac',
+                        legenda: 'senac_legenda'
+                    });
+                });
+
+            </script>
+            <!--<script src="assets/scripts/botoes.js"></script>-->
+            <!-- Global site tag (gtag.js) - Google Analytics 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118053033-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-118053033-1');
+    </script>-->
+
+</body>
+
+</html>

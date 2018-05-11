@@ -1,0 +1,477 @@
+<!doctype html>
+<html class="M1">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Programa de Transparência e Unicidade Senac</title>
+    <!-- core -->
+    <link href="assets/plugins/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/plugins/font-awesome-4.6.3/css/fontawesome-all.css" rel="stylesheet" type="text/css">
+    <!-- plugins -->
+    <!-- layout -->
+    <link href="assets/css/default.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/style.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/audio_style.css" rel="stylesheet" type="text/css">
+    <link href="assets/plugins/jwplayer-7.4.4/skins/senac.css" rel="stylesheet" type="text/css">
+
+    <!--<script src="assets/plugins/audiojs/audio.js"></script>
+    <script>
+        audiojs.events.ready(function() {
+            //audiojs.createAll();
+            var as = audiojs.createAll(),
+                audio = as[0],
+                numVolume = $('#volumebar').val() / 100,
+                createdStyle = false;
+
+            // VERIFICA VOLUME
+            audio.setVolume(numVolume);
+            verifyVolume();
+
+            $('#btn-volume').on('click', function() {
+                var status = !audio.element.muted;
+                audio.element.muted = status;
+
+                if (!status) {
+                    $("#volumebar").val(numVolume);
+                } else {
+                    numVolume = $("#volumebar").val();
+                    $("#volumebar").val(0);
+                }
+
+                verifyAudio('clicked');
+            });
+
+            $("#volumebar").on('change', function() {
+                var status = !audio.element.muted;
+
+                if (status)
+                    audio.setVolume($(this).val() / 100);
+                else
+                    audio.element.muted = status;
+                audio.setVolume($(this).val() / 100);
+
+                verifyAudio('changed');
+            });
+
+            function verifyAudio(status) {
+                getVolume = audio.element.volume;
+                muteVolume = audio.element.muted;
+
+                if (getVolume == 0 || muteVolume) {
+                    $('#btn-volume').children('i').removeAttr('class').addClass('ico-volumeMute');
+                } else if (getVolume > 0 && getVolume <= 0.49) {
+                    $('#btn-volume').children('i').removeAttr('class').addClass('ico-volumeMin');
+                } else {
+                    $('#btn-volume').children('i').removeAttr('class').addClass('ico-volumeMax');
+                }
+
+                verifyVolume();
+            }
+
+            function verifyVolume() {
+                var r = document.querySelectorAll('input[type=range]'),
+                    prefs = ['webkit-slider-runnable', 'moz-range'],
+                    styles = [],
+                    l = prefs.length,
+                    n = r.length;
+
+                var getTrackStyleStr = function(el, j) {
+                    var str = '',
+                        min = el.min || 0,
+                        perc = (el.max) ? ~~(100 * (el.value - min) / (el.max - min)) : el.value,
+                        val = perc + '% 100%';
+
+                    for (var i = 0; i < l; i++) {
+                        str += "input[type=range]::-" + prefs[i] + '-track{background-size:' + val + '} ';
+                    }
+
+                    return str;
+                };
+
+                var setDragStyleStr = function(evt) {
+                    var trackStyle = getTrackStyleStr(evt.target, this);
+                    styles[this].textContent = trackStyle;
+                };
+
+                if (!createdStyle) {
+                    createdStyle = true;
+
+                    for (var i = 0; i < n; i++) {
+                        var s = document.createElement('style');
+                        s.id = "estiloAudio";
+                        document.body.appendChild(s);
+                        styles.push(s);
+                        r[i].addEventListener('input', setDragStyleStr.bind(i), false);
+
+                        var str = '';
+                        for (var g = 0; g < l; g++) {
+                            str += "input[type=range]::-" + prefs[g] + '-track{background-size:' + $('#volumebar').val() + '% 100% }';
+                        }
+                        styles[0].textContent = str;
+                    }
+                } else {
+                    //styleTag = document.getElementsByTagName("style");
+                    styleTagID = document.getElementById("estiloAudio");
+                    inputVolume = document.getElementById("volumebar");
+
+                    var trackStyle = getTrackStyleStr(inputVolume, this);
+                    styleTagID.innerHTML = trackStyle;
+                }
+            }
+        });
+
+    </script>-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- topo -->
+    <header>
+        <div class="container">
+            <div class="row linha-header">
+                <div class="col-sm-6 col-xs-6 ">
+                    <img src="assets/img/logoSenac.png" class="img-responsive logoSenac pull-left" />
+                </div>
+                <div class="col-sm-6 col-xs-6 ">
+                    <a href="index.html"><img src="assets/img/logoTransparencia.png" class="img-responsive center-block pull-right" /></a>
+                </div>
+                <!--<div class="col-sm-2 col-xs-2 hidden">
+                    <div class="nav-menu">
+                        <button aria-expanded="false" aria-controls="navigation-list" aria-label="Abrir o menu de navegação" id="navigation-button" class="nav-button" type="button" title="Abrir o menu de navegação">
+                                <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>-->
+            </div>
+            
+        </div>
+    </header>
+    <!-- menu aberto -->
+    <nav role="navigation">
+        <div class="overlayMenu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 mt40">
+                        <img src="assets/img/bt_voltar.png" class="img-responsive pull-right nav-button" />
+                    </div>
+                    <div class="col-xs-4 col-xs-offset-8 col-sm-12 col-sm-offset-0">
+                        <ul class="full-menu pull-right" role="menu" aria-labelledby="dropdownMenu" id="ulMenu"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="modulos">
+        <div class="conteudo">
+            <!-- imagem topo/nome do curso -->
+            <div class="container-fluid">
+                <div class="topo py-xs-10">
+                    <h1></h1>
+                    <h2></h2>
+                </div>
+            </div>
+            <!-- CONTEUDO -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3><span>01</span>Conceito e forma de cálculo da receita de contribuição compulsória líquida</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 ">
+                        <h4>1.1. Deduções para chegar ao gasto total líquido</h4>
+                        <h5>1.1.1 Números importantes</h5>
+                        <p>No decorrer do curso, você viu dois números importantes:</p>
+                        <ul class="lista">
+                            <li>as despesas correntes do Departamento Regional no últimoexercício (que, no nosso exemplo, é 2017) – <strong>R$ 150.000.000,00</strong>;</li>
+                            <li>o investimento projetado – <strong>R$ 20.880.000,00</strong>.</li>
+                        </ul>
+                        <p>Com esses números, é possível calcular o gasto total líquido que, conforme as Diretrizes do PSG, é o somatório das despesas correntes do último exercício, menos a comissão ao órgão arrecadador e as contribuições para a CNC e as Federações do Comércio, mais o investimento projetado. </p>
+                    </div>
+
+                    <div class="col-sm-5 col-sm-offset-1">
+                        <img src="assets/img/img1.png" class="img-responsive center-block">
+                    </div>
+                </div>
+            </div>
+
+            
+            <!--<div class="container">
+                <div class="row">
+                    <div class="col-sm-6 p0">
+                        <img src="assets/img/detalhe-bloco1.png" class="img-responsive pull-right">
+                    </div>
+                </div>
+            </div>-->
+
+            <div class="container-fluid bg-grafico pt0 pb70 mt50 pb30">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <img src="assets/img/detalhe-bloco2.png" class="img-responsive  mt-50  hidden-xs">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 img-destaque pr0">
+                            <img src="assets/img/img2.gif" class="img-responsive mt125 pb30" />
+                        </div>
+
+                        <div class="col-sm-6">
+                            <p>O valor a ser considerado como RCCL nos Departamentos Regionais corresponde ao valor repassado pelo DN, deduzido do percentual de <strong>4,94%</strong> para pagamento da comissão ao órgão arrecadador (Receita Federal do Brasil) e das contribuições à CNC e à Federação do Comércio. Ou seja, a RCCL representa <strong>95,06%</strong> do valor repassado pelo DN.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid bloco-slide mt0 hidden-xs hidden-sm">
+                <div class="container">
+                    <div class="row">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <div class="row">
+                                        <div class="col-sm-7">
+                                            <img src="assets/img/img1-slide.png" class="img-responsive" />
+                                        </div>
+                                        <div class="col-sm-4 pt80 txt-slider">
+                                            <h3>1. Plano de aplicação inicial</h3>
+                                            <p>Na primeira etapa, o Departamento Regional estima sua oferta de cursos para o PSG levando em consideração as projeções de receita compulsória, comprometimento e GMAHA. O Departamento Regional deve realizar essa estimativa para estabelecer o montante de carga horária a ser realizado com o programa</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-sm-7">
+                                            <img src="assets/img/img2-slide.png" class="img-responsive" />
+                                        </div>
+                                        <div class="col-sm-4 pt80 txt-slider">
+                                            <h3>2. Pellentesque ut lacus at enim</h3>
+                                            <p>Aliquam malesuada, dui vel feugiat condimentum, tortor sem auctor sapien, id ullamcorper nulla lacus pretium enim. Suspendisse leo enim, accumsan vulputate luctus vel, rutrum quis ipsum. Morbi sapien ligula, auctor pretium tristique vitae, vestibulum a felis. Integer eget imperdiet turpis, at aliquam risus. Morbi bibendum risus in egestas feugiat. Sed vel porttitor risus. Morbi ante lectus, mollis malesuada venenatis vitae, pharetra nec sapien. </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-sm-7">
+                                            <img src="assets/img/img3-slide.png" class="img-responsive" />
+                                        </div>
+                                        <div class="col-sm-4 pt80 txt-slider">
+                                            <h3>3. Praesent nec elementum ante</h3>
+                                            <p>Aenean venenatis mollis semper. Vivamus mi diam, feugiat vitae nisl sed, hendrerit elementum risus. Maecenas tellus nulla, rhoncus eget odio condimentum, viverra feugiat libero. Quisque porta egestas est. Nunc porttitor nunc id tempor rhoncus. Fusce convallis risus quis ornare ultrices. Nunc elementum viverra leo, vel gravida risus semper at. In convallis aliquet mi, nec ornare mauris efficitur non. Nam aliquam sed orci nec feugiat. Proin scelerisque imperdiet lacus, vel sodales ante faucibus id. Phasellus lobortis blandit justo, nec eleifend lacus feugiat eget. Praesent a justo ac magna lobortis tempus. </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="controls-slide">
+                                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                        <i class="fas fa-angle-left"></i>
+                                        <span class="sr-only">Previous</span>
+                                            </a>
+                                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                            <i class="fas fa-angle-right"></i>
+                                            <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+
+                                <!-- Indicators -->
+                                <div class="row">
+                                    <div class="col-sm-4 col-sm-offset-7 indicators">
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                        </ol>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <!-- slider transform mobile -->
+            <div class="bloco-slide-xs hidden-md hidden-lg">
+                <div class="container-fluid">
+
+                    <!-- slider mobile 1 -->
+                    <div class="panel-group" id="accordion-slider1" role="tablist" aria-multiselectable="false">
+                        <div class="panel panel-slider">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <a data-toggle="collapse" data-parent="#accordion-slider1" href="#collapse-slider1" aria-expanded="false" aria-controls="collapse-slider1" class="collapsed">
+                                    <h4 class="panel-title">
+                                        <strong>1. Plano de aplicação inicial</strong>
+
+                                        <div class="icone-accordion pull-right">
+                                            <i class="fas fa-angle-double-down"></i>
+                                            <i class="fas fa-angle-double-up"></i>
+                                        </div>
+                                    </h4>
+                                </a>
+                            </div>
+
+                            <div id="collapse-slider1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <img src="assets/img/img1-slide_mobile.png" class="img-responsive" />
+                                <div class="panel-body">
+                                    <p>Na primeira etapa, o Departamento Regional estima sua oferta de cursos para o PSG levando em consideração as projeções de receita compulsória, comprometimento e GMAHA. O Departamento Regional deve realizar essa estimativa para estabelecer o montante de carga horária a ser realizado com o programa</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- fim slider mobile 1 -->
+
+                    <!-- slider mobile 2 -->
+                    <div class="panel-group" id="accordion-slider2" role="tablist" aria-multiselectable="false">
+                        <div class="panel panel-slider">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <a data-toggle="collapse" data-parent="#accordion-slider2" href="#collapse-slider2" aria-expanded="false" aria-controls="collapse-slider2" class="collapsed">
+                                    <h4 class="panel-title">
+                                        <strong>2. Pellentesque ut lacus porttitor</strong>
+
+                                        <div class="icone-accordion pull-right">
+                                            <i class="fas fa-angle-double-down"></i>
+                                            <i class="fas fa-angle-double-up"></i>
+                                        </div>
+                                    </h4>
+                                </a>
+                            </div>
+
+                            <div id="collapse-slider2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <img src="assets/img/img2-slide_mobile.png" class="img-responsive" />
+                                <div class="panel-body">
+                                    <p>Aliquam malesuada, dui vel feugiat condimentum, tortor sem auctor sapien, id ullamcorper nulla lacus pretium enim. Suspendisse leo enim, accumsan vulputate luctus vel, rutrum quis ipsum. Morbi sapien ligula, auctor pretium tristique vitae, vestibulum a felis. Integer eget imperdiet turpis, at aliquam risus. Morbi bibendum risus in egestas feugiat. Sed vel porttitor risus. Morbi ante lectus, mollis malesuada venenatis vitae, pharetra nec sapien.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- fim slider mobile 2 -->
+
+                    <!-- slider mobile 3 -->
+                    <div class="panel-group" id="accordion-slider3" role="tablist" aria-multiselectable="false">
+                        <div class="panel panel-slider">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <a data-toggle="collapse" data-parent="#accordion-slider3" href="#collapse-slider3" aria-expanded="false" aria-controls="collapse-slider3" class="collapsed">
+                                    <h4 class="panel-title">
+                                        <strong>3. Praesent nec elementum ante</strong>
+
+                                        <div class="icone-accordion pull-right">
+                                            <i class="fas fa-angle-double-down"></i>
+                                            <i class="fas fa-angle-double-up"></i>
+                                        </div>
+                                    </h4>
+                                </a>
+                            </div>
+
+                            <div id="collapse-slider3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <img src="assets/img/img3-slide_mobile.png" class="img-responsive" />
+                                <div class="panel-body">
+                                    <p>Aenean venenatis mollis semper. Vivamus mi diam, feugiat vitae nisl sed, hendrerit elementum risus. Maecenas tellus nulla, rhoncus eget odio condimentum, viverra feugiat libero. Quisque porta egestas est. Nunc porttitor nunc id tempor rhoncus. Fusce convallis risus quis ornare ultrices. Nunc elementum viverra leo, vel gravida risus semper at. In convallis aliquet mi, nec ornare mauris efficitur non. Nam aliquam sed orci nec feugiat. Proin scelerisque imperdiet lacus, vel sodales ante faucibus id. Phasellus lobortis blandit justo, nec eleifend lacus feugiat eget. Praesent a justo ac magna lobortis tempus. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- fim slider mobile 3 -->
+
+                </div>
+            </div>
+
+            <div class="container-fluid bg-anima mt0 bg_grafico1" id="bg_grafico1">
+                <div class="container">
+                    <div class="col-sm-12 img-destaque">
+                        <img src="" id="gif-anima1" class=" img-responsive center-block mt50 mb50 hidden-xs" />
+                        <img src="" id="gif-anima1-mobile" class=" img-responsive center-block mt50 mb50 hidden-sm hidden-lg" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-partes bg-saiba pt30 mt0 mb0">
+                <div class="container">
+                    <div class="titulo-box">
+                        <img src="assets/img/icone-saiba.png" class="img-responsive icone-partes" />
+                        <h3>SAIBA MAIS</h3>
+                    </div>
+                    <p>Em 2017, o termo Custo Médio por Aluno/Hora-Aula (CMAHA) foi alterado para Gasto Médio por Aluno/Hora-Aula (GMAHA) para reforçar que, nessa conta, além dos “custos” para a prestação de serviços ao alunos, são incluídos todos os gastos, incluindo os custos, as despesas e os investimentos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container ">
+            <div class="row">
+                <div class="col-sm-6">
+                    <a href="">Termos de uso</a> | <a href="">Política de privacidade</a>
+                    <p>©2018 Senac. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-sm-6">
+                    <a href="">Catálogo de cursos </a> | <a href="">Perguntas frequentes</a> | <a href="">Suporte</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- core -->
+    <script src="assets/plugins/jquery-1.12.3.min.js"></script>
+    <script src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/plugins/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+
+    <!-- plugins -->
+    <script src="assets/plugins/skrollr.min.js"></script>
+    <!--<script src="assets/plugins/jquery.animaCanvas.js"></script>-->
+    <script src="assets/plugins/jquery.waypoints.min.js"></script>
+    <script src="assets/plugins/jwplayer-7.4.4/jwplayer.js"></script>
+    <script src="assets/plugins/videoPlayer.js"></script>
+
+    <script src="assets/scripts/script.js"></script>
+    <script src="assets/scripts/index.js"></script>
+
+    <script>
+        $(document).ready(function(e) {
+            var removeAltura = function(){ 
+                $('.bg_grafico1').css('height','auto');
+            }
+            if($(window).width() > 767){
+                triggerWay('gif-anima1', 'gif-anima1', 'assets/img/grafico_anim_1.gif', removeAltura);
+            }
+            
+            if($(window).width() < 767){
+                triggerWay('gif-anima1-mobile', 'bg_grafico1', 'assets/img/grafico_anim_mobile.gif', removeAltura);
+            }
+            
+            
+            
+        });
+
+    </script>
+
+    <!--<script src="assets/scripts/botoes.js"></script>-->
+    <!-- Global site tag (gtag.js) - Google Analytics 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118053033-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-118053033-1');
+    </script>-->
+
+</body>
+
+</html>
