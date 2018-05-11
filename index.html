@@ -4,59 +4,73 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Senac São Paulo</title>
-        <!-- core -->
-        <link href="assets/js/libs/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="assets/js/libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <!-- plugins -->
-        <!-- layout -->
-        <link href="assets/css/style.min.css" rel="stylesheet" type="text/css">
-        <link href="assets/js/libs/jScrollPane/jquery.jscrollpane.css" rel="stylesheet" type="text/css" />
+        <title>Senac</title>
+        
+        <style>
+            html, body { height: 100%; }
+            body {
+                background: linear-gradient(rgba(18,82,62,0.6) 0%, rgba(18,82,62,0.3) 20%, rgba(18,82,62,0) 65%);
+                margin: 0;
+                padding: 0;
+            }
 
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-          	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+            .wrapper {
+                display: flex;
+                position: relative;
+                align-items: center;
+                justify-content: center;
+                flex-direction: row;
+                height: 100vh;
+            }
+
+            .ul-chapter {
+                margin: 0;
+                padding: 0;
+                outline: none;
+                position: relative;
+                height: auto;
+                width: 800px;
+                z-index: 100;
+            }
+            
+            .btn-chapter {
+                background: #12523e;
+                border-top: solid 1px #FFF;
+                color: #FFF;
+                cursor: pointer;
+                font-family: 'Titillium Web', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+                list-style: none;
+                margin: 0;
+                padding: 12px 20px;
+                text-align: center;
+
+                -webkit-transition: all 0.3s;
+                -moz-transition: all 0.3s;
+                -ms-transition: all 0.3s;
+                transition: all 0.3s;
+            }
+            .btn-chapter:hover {
+                background-color: #c76c1c;
+                color: #FFF;
+            }
+
+            .btn-chapter a {
+                color: #FFF;
+                text-decoration: none;
+            }
+        </style>
     </head>
     
     <body>
         <div class="wrapper">
-            <section id="section1">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="player"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <ul id="ulCapitulos" class="ul-chapter">
+                <li class="btn-chapter" id="btn_0"><a href="Animacao/index.html">Animação</a></li>
+                <li class="btn-chapter" id="btn_1"><a href="Narrada/index.html">Aula Narrada</a></li>
+                <li class="btn-chapter" id="btn_2"><a href="Storyline/index.html">Storyline</a></li>
+                <li class="btn-chapter" id="btn_3"><a href="VideoPilula/index.html">Vídeo Pílula</a></li>
+            </ul>
         </div>
-                
-        <!-- core -->
-        <script src="assets/js/libs/jquery-1.12.3.min.js"></script>
-        <script src="assets/js/libs/jquery-migrate-1.2.1.min.js"></script>
-        <script src="assets/js/libs/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
-        
-        <!-- plugins -->
-        <script src="assets/js/libs/jwplayer-7.4.4/jwplayer.js"></script>
-        <script src="assets/js/libs/jScrollPane/jquery.jscrollpane.min.js"></script>
-        <script src="assets/js/scripts/videoPlayer.js"></script>
-        <!-- fim plugins -->
-    
-        <script>
-            $(document).ready(function(e) {
-                $('.player').video_TAE({ 
-                    id: 'meuVideo',
-                    hd: 'false',
-                    skin: 'senac',
-                    aspect: '16:9',
-                    capa: 'capaVideo.png',
-                    legenda: 'Animacao',
-                    video: 'Animacao' });
-            });
-        </script>
-        
-        <script src="assets/js/scripts/index.js"></script>
     </body>
 </html>

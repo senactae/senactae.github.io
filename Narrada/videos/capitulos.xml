@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<video>
+	<chapters>
+		<chapter>
+			<tempo>0</tempo>
+			<nome>Introdução</nome>
+		</chapter>
+
+		<chapter>
+			<tempo>5</tempo>
+			<nome>Contabilização da gratuidade</nome>
+		</chapter>
+
+		<chapter>
+			<tempo>36</tempo>
+			<nome>Fator de correlação</nome>
+		</chapter>
+
+		<chapter>
+			<tempo>63</tempo>
+			<nome>Contabilização mensal</nome>
+		</chapter>
+
+		<chapter>
+			<tempo>88</tempo>
+			<nome>CHE total</nome>
+		</chapter>
+	</chapters>
+</video>

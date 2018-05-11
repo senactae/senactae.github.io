@@ -1,0 +1,60 @@
+1
+00:00:07,020 --> 00:00:11,140
+Seja bem-vindo à aula narrada sobre a contabilização da gratuidade.
+
+2
+00:00:11,240 --> 00:00:17,800
+Contabilizar corretamente as operações realizadas no âmbito do programa Senac de gratuidade
+
+3
+00:00:17,880 --> 00:00:23,960
+garante a transparência necessária a esse importante programa de nossa instituição.
+
+4
+00:00:24,300 --> 00:00:30,960
+Além disso, por meio da contabilização correta, conseguimos traçar um histórico confiável do PSG,
+
+5
+00:00:31,100 --> 00:00:35,540
+o que será muito útil para análises e estudos futuros.
+
+6
+00:00:36,940 --> 00:00:41,420
+Quando dividimos o somatório da despesa de capital dos últimos cinco anos,
+
+7
+00:00:41,480 --> 00:00:50,080
+no valor de R$ 89.800.000,00 pelo somatório da despesa corrente também dos últimos cinco anos,
+
+8
+00:00:50,240 --> 00:01:02,000
+no valor de R$ 644.700.000,00, e multiplicamos por 100, identificamos que o fator de correlação é de 13,92%.
+
+9
+00:01:04,360 --> 00:01:07,320
+De acordo com as diretrizes do PSG
+
+10
+00:01:07,480 --> 00:01:15,120
+e com a seção de perguntas e respostas do código de contabilidade e orçamento (CODECO) 2018,
+
+11
+00:01:15,240 --> 00:01:23,680
+os departamentos regionais realizarão a contabilização mensal: do compromisso de destinação da RCCL
+
+12
+00:01:24,080 --> 00:01:27,480
+e do valor efetivamente aplicado no programa.
+
+13
+00:01:28,920 --> 00:01:36,640
+Em seguida, é necessário identificar nos registros de produção a CHE total executada até o mês,
+
+14
+00:01:36,760 --> 00:01:42,960
+lembrando que tais quantitativos devem estar em conformidade com os sistemas internos do DR
+
+15
+00:01:42,960 --> 00:01:49,200
+e também da ferramenta do DN (ambiente de recepção – módulo PSG).
+
