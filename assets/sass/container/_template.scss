@@ -1,0 +1,276 @@
+$cores: (
+    azul: (
+        color1: #172952,
+        color2: #12523e,
+        color3: #12A7AE,
+        color4: #753E5F,
+        color5: #D0D3DB,
+        color6: #4d4d4d,
+        color7: #FFFFFF,
+        color8: #2E6A72
+    ),
+    laranja: (
+        color1: #f54f29,
+        color2: #ff974f,
+        color3: #9c9b7a,
+        color4: #9b2c14,
+        color5: #ffedd3,
+        color6: #4d4d4d,
+        color7: #FFFFFF,
+        color8: #736357
+    ), 
+    verde: (
+        color1: #004a47,
+        color2: #00855d,
+        color3: #c03a48,
+        color4: #2b978e,
+        color5: #c1e5d8,
+        color6: #4d4d4d,
+        color7: #FFFFFF,
+        color8: #5b8b8a
+    ),    
+    cinza: (
+        color1: #333333,
+        color2: #666666,
+        color3: #999999,
+        color4: #BBBBBB,
+        color5: #DDDDDD,
+        color6: #4d4d4d,
+        color7: #FFFFFF,
+        color8: #808080
+    )
+);
+
+@each $tema, $cor in $cores {
+    $color1: map-get($cor, color1);
+    $color2: map-get($cor, color2);
+    $color3: map-get($cor, color3);
+    $color4: map-get($cor, color4);
+    $color5: map-get($cor, color5);
+    $color6: map-get($cor, color6);
+    $color7: map-get($cor, color7);
+    $color8: map-get($cor, color8);
+
+    body.#{$tema} {
+        background: linear-gradient(rgba($color2, 0.6) 0%, rgba($color2, 0.3) 20%, rgba($color2, 0) 65%);
+
+        /* SEÇÕES */
+        .menuSection { 
+            background: $color1; 
+
+            .nav-button {
+                &:hover {
+                    background: $color2; 
+                }
+            }
+
+            /* MENU */
+            .navbar-nav { 
+                background: $color1;
+
+                li:hover,
+                li.active { background: $color2; }
+            }
+        }
+        
+        .sec3 { background: $color5; }
+        footer { 
+            background: $color8; 
+
+            p { color: $color7; }
+        }
+
+        /* TEXTOS */
+        h2 { color: $color6; }
+        h3 { 
+            color: $color2; 
+        
+            &::before, &::after {
+                border-color: $color4;
+            }
+        }
+        h4 { color: $color2; }
+        p { color: $color6; }
+
+        /* BOTÕES */
+        .botaoPadrao { 
+            background: $color3;
+            
+            &:hover { 
+                background: $color2;
+            }
+        }
+
+        /* BLOCOS */
+        .bloco-leitura {
+            .icoStatic {    
+                &.anima { 
+                    background: $color3;
+                    opacity: 1;
+
+                    @include animation(scaleRotate-#{$tema});
+                    animation-duration: 1s;
+                    animation-timing-function: ease;
+                }
+
+                &.static {
+                    background: $color3;
+                }
+
+                &:hover { background: $color2; }
+            }
+        }
+
+        .bloco-material {            
+            .icoMaterial {
+                .icoStatic {
+                    &.anima { background: $color4; }
+                }
+            }
+        }
+    }
+
+    @include keyframes(scaleRotate-#{$tema}) {
+        0% { 
+            background: $color2;
+            opacity: 0;
+            @include transform(scale(0) rotate(0deg));
+        }
+        100% { 
+            background: $color3;
+            opacity: 1;
+            @include transform(scale(1) rotate(360deg));
+        }
+    }
+}
+
+body.contraste {
+    background: #000;
+    color:#FFF;
+
+    .wrapper { 
+        background: #000;
+
+        .menuAcessibilidade {
+            background: #333;
+
+            .btn-acessibilidade { color: #F08A20; }
+        }
+
+        header {
+            background: #000;
+
+            .logoSenac { background: url(../img/logoSenac_off.png) top left no-repeat; background-size: 100%; }
+        }
+
+        .menuSection { 
+            background: #222; 
+            color: #FFF;
+
+            .nav-button {
+                &:hover {
+                    background: #000;
+                    color: #F08A20;
+                }
+            }
+
+            .navbar-nav {
+                background: #222; 
+                color: #FFF;
+
+                li:hover,
+                li.active { 
+                    background: #000;
+                
+                    a { color: #F08A20; }
+                }
+            }
+        }
+    
+        #divSection { 
+            #divConteudo {
+                .sec1 { background: #000; }
+                .sec2 { background: #000; }
+                .sec3 { background: #222; }
+                .sec4 { background: #000; }
+            }
+        }
+
+        footer { 
+            background: #222; 
+    
+            p { color: #FFF; }
+        }
+    }
+
+    /* TEXTOS */
+    h2 { color: #FFF; }
+    h3 { 
+        color: #FFF; 
+    
+        &::before, &::after {
+            border-color: #FFF;
+        }
+    }
+    p { color: #FFF; }
+
+    /* BOTÕES */
+    .botaoPadrao { 
+        background: #000;
+        color: #F08A20;
+        
+        &:hover { 
+            background: #FFFFFF;
+            color: #000;
+        }
+    }
+
+    .coresTemplate { display: none; }
+    .linkLights { opacity: 0; pointer-events: none; }
+
+    /* BLOCOS */
+    .bloco-leitura {
+        .icoStatic {
+            &.anima {
+                background: #222222;
+
+                @include animation(scaleContraste);
+                animation-duration: 1s;
+                animation-timing-function: ease;
+            }
+
+            &.static { background: #222222; }
+            &:hover { background: #222222; }
+        }
+    }
+
+    @include keyframes(scaleContraste) {
+        0% {
+            background: #222222;
+            opacity: 0;
+            @include transform(scale(0) rotate(0deg));
+        }
+        100% { 
+            background: #222222;
+            opacity: 1;
+            @include transform(scale(1) rotate(360deg));
+        }
+    }
+
+    .bloco-material {
+        background: #222;
+        
+        .icoMaterial { 
+            .icoStatic {
+                &.anima { background:#222; }
+            }
+        }
+
+        .conteudoBloco {
+            border: solid 2px #222;
+            
+            h4 { color: #FFFFFF; }
+            p { color: #FFFFFF; }
+        }
+    }
+}

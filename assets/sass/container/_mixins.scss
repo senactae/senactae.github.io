@@ -1,0 +1,67 @@
+$bp-largeDesktop: "only screen and (min-width: 1281px)";
+$bp-minDesktop: "only screen and (max-width: 1200px)";
+$bp-tablet: "only screen and (max-width: 992px)";
+$bp-phone: "only screen and (max-width: 691px)";
+$bp-minPhone: "only screen and (max-width: 479px)";
+
+@mixin border-box {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+@mixin box-shadow($props) {
+    -webkit-box-shadow: $props;
+       -moz-box-shadow: $props;
+            box-shadow: $props;
+}
+
+@mixin transform($props) {
+  -webkit-transform: $props;
+     -moz-transform: $props;
+      -ms-transform: $props;
+          transform: $props;
+}
+
+@mixin perspective($props) {
+    -webkit-perspective: $props;
+       -moz-perspective: $props;
+            perspective: $props;
+}
+
+@mixin transform-origin($props) {
+    -webkit-transform-origin: $props;
+       -moz-transform-origin: $props;
+            transform-origin: $props;
+}
+
+@mixin transition($props) {
+  -webkit-transition: $props;
+     -moz-transition: $props;
+      -ms-transition: $props;
+          transition: $props;
+}
+
+//animation
+@mixin animation($animation) {
+	-webkit-animation: $animation;
+	   -moz-animation: $animation;
+	    -ms-animation: $animation;
+      	 -o-animation: $animation;
+			animation: $animation;
+}
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    } 
+}

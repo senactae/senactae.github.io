@@ -1,0 +1,230 @@
+.contentIndex {
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-align-items: center;
+            align-items: center;
+            
+    -webkit-justify-content: center;
+            justify-content: center;
+
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 2;
+   
+    &.atuacao {
+        background: url(../images/BG_Index_atuacao.png) center no-repeat;
+        background-size: cover;
+
+        .botaoIndex {
+            background: #daab34;
+            color: #FFF;
+    
+            &:hover {
+                background: #FFF;
+                color: #daab34;
+            }
+        }
+    }
+    &.compliance {
+        background: url(../images/BG_Index_compliance.png) center no-repeat;
+        background-size: cover;
+
+        .botaoIndex {
+            background: #599caf;
+            color: #FFF;
+    
+            &:hover {
+                background: #FFF;
+                color: #599caf;
+            }
+        }
+    }
+    &.gestao {
+        background: url(../images/BG_Index_gestao.png) center no-repeat;
+        background-size: cover;
+
+        .botaoIndex {
+            background: #3d3e4c;
+            color: #FFF;
+    
+            &:hover {
+                background: #bbbcbe;
+                color: #3d3e4c;
+            }
+        }
+    }
+
+    .botaoIndex {
+        background: #3d3e4c;
+        border-radius: 6px;
+        color: #FFF;
+        cursor: pointer;
+        display: block;
+        font-family: 'Oswald', sans-serif;
+		font-size: 18px;
+		font-weight: 600;
+        margin: 50px auto 0;
+        padding: 15px 30px;
+        position: relative;
+        width: auto;
+        text-transform: uppercase;
+
+        @include transition(all 0.3s);
+
+        &:hover {
+            background: #bbbcbe;
+            color: #3d3e4c;
+        }
+    }
+
+    @media #{$bp-phone} {
+        .botaoIndex {
+            margin: 40px auto 0;
+        }
+    }
+
+    @media #{$bp-minPhone} {
+        .contentBanner {
+            h1 { font-size: 33px; }
+            .blocoBordered { 
+                font-size: 16px;
+                margin: 20px 0; 
+            }
+        }
+    }
+}
+
+.mobile {
+    .contentIndex {
+        display: block;
+        height: auto;
+        padding: 30px 0;
+
+        /*&.atuacao, &.compliance, &.gestao {
+            background-size: initial;
+        }*/
+    }
+
+    &.ios {
+        .contentIndex {
+            &.atuacao {
+                background: #589caf;
+                background-size: initial;
+                max-height: 550px;
+
+                &::after{
+                    background: #fff url(../images/BG_Index_atuacao.png) center no-repeat;
+                    background-size: cover;
+                    position: absolute;
+                    display: block;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    left: 0;
+                    content: ' ';
+                    z-index: -1;
+                }
+
+                .botaoIndex {
+                    background: #daab34;
+                    color: #FFF;
+            
+                    &:hover {
+                        background: #FFF;
+                        color: #daab34;
+                    }
+                }
+            }
+
+            &.compliance {
+                background: #272928;
+                background-size: initial;
+                max-height: 550px;
+
+                &::after{
+                    background: url(../images/BG_Index_compliance.png) center no-repeat;
+                    background-size: cover;
+                    position: absolute;
+                    display: block;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    left: 0;
+                    content: ' ';
+                    z-index: -1;
+                }
+                
+                .botaoIndex {
+                    background: #599caf;
+                    color: #FFF;
+            
+                    &:hover {
+                        background: #FFF;
+                        color: #599caf;
+                    }
+                }
+            }
+
+            &.gestao {
+                background: #aab646;
+                background-size: initial;
+                max-height: 550px;
+
+                &::after{
+                    background: url(../images/BG_Index_gestao.png) center no-repeat;
+                    background-size: cover;
+                    position: absolute;
+                    display: block;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    left: 0;
+                    content: ' ';
+                    z-index: -1;
+                }
+
+                .botaoIndex {
+                    background: #3d3e4c;
+                    color: #FFF;
+            
+                    &:hover {
+                        background: #bbbcbe;
+                        color: #3d3e4c;
+                    }
+                }
+            }
+
+            overflow: auto;
+            position: relative;
+            max-height: 550px;
+
+            @media #{$bp-phone} { 
+                height: 550px;
+            }
+        }
+    }
+
+    &.ipad {
+        .contentIndex {
+            &.atuacao, &.compliance, &.gestao {
+                max-height: 840px;
+
+                @media #{$bp-tablet} { 
+                    height: 840px;
+                }
+
+                @media only screen 
+					and (min-width: 834px) 
+					and (max-width: 1112px)
+					and (-webkit-min-device-pixel-ratio: 2) {
+                        max-height: 650px;
+                        height: 650px;
+					}
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+.botaoPadrao { 
+	background: #13a6b0;
+	border: 0;
+	color: #FFF;
+	display: block;
+	font-family: 'Nunito Sans', Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	margin: 50px auto 0;
+	outline: 2px solid transparent;
+	padding: 10px 30px;
+	text-align: center;
+	text-transform: uppercase;
+	
+	@include transition (all 0.3s ease);
+	
+	&:hover { 
+		background: #064f8e; 
+	}
+
+	&:focus { outline: 2px solid blue; }
+}

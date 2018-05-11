@@ -1,0 +1,247 @@
+/* FLEX BOX */
+.bloco-flex {
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: row;
+	-webkit-align-items: center;
+		  	align-items: center;
+
+	height: auto;
+	margin: 30px auto;
+	padding: 0;
+	position: relative;
+
+	.flex-imagem { width: 20%; }
+	.flex-texto {
+		padding: 0 0 0 30px;
+		width: 80%;
+
+		p {
+			&:last-child { margin: 0; }
+		}
+		ul {
+			&:last-child { margin-bottom: 0; }
+		}
+	}
+
+	@media #{$bp-phone} { 
+		flex-direction: column;
+
+		.flex-imagem { 
+			width: 100%; 
+		
+			img { margin: 0 auto 25px; }
+		}
+		.flex-texto {
+			padding: 0;
+			width: 100%;
+
+			&.flex-centro {
+				p { text-align: center; }
+			}
+		}
+	}
+}
+
+/* BLOCO LEITURA */
+.bloco-leitura {
+	display: block;
+	position: relative;
+	margin: 15px auto;
+	padding: 0;
+	text-align: center;
+	height: 160px;
+	width: 160px;
+
+	canvas { position: relative; z-index: 2; pointer-events: none; }
+
+	.icoStatic {
+		cursor: pointer;
+		display: block;
+		height: 160px;
+		position: absolute;
+		top: 0;
+		width: 160px;
+		z-index: 1;
+
+		@include transition(all 0.3s);
+	}
+
+	img { margin: 0 auto 5px; }
+
+	p { 
+		color: #FFF;
+		display: block;
+		font-family: 'Nunito Sans', Arial, sans-serif;
+		font-size: 14px;
+		font-weight: 700;
+		margin: 0;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	@media #{$bp-phone} {
+		height: 140px;
+		width: 140px;
+
+		.icoStatic,
+		canvas { height: 100% !important; width: 100% !important; }
+	}
+}
+
+/* BLOCO VINHO */
+.bloco-material {
+	display: block;
+	position: relative;
+	margin: 40px auto 0;
+	padding: 0;
+	height: 160px;
+	width: 100%;
+	
+	.icoMaterial {
+		display: block;
+		position: relative;
+		margin: 0;
+		padding: 0;
+		height: 160px;
+		width: 160px;
+
+		.icoStatic {
+			display: block;
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0;
+			margin: 0;
+			padding: 0;
+			height: 160px;
+			width: 160px;
+
+			&.anima {
+				opacity: 1;
+
+				animation-duration: 1s;
+				animation-name: fadeScale;
+				animation-timing-function: ease;
+			}
+		}
+
+		canvas { position: relative; z-index: 2; pointer-events: none; }
+	}
+
+	@keyframes fadeScale {
+		0% {
+			@include transform(scale(0)); 
+			opacity: 0;
+		}
+		100% { 
+			@include transform(scale(1)); 
+			opacity: 1;
+		}
+	}
+	
+	.conteudoBloco {
+		border: solid 2px #a6a8ab;
+		display: block;
+		position: absolute;
+		margin: 0;
+		padding: 20px 0 0 25px;
+		height: 160px;
+		width: auto;
+		top: 0;
+		left: 160px;
+		bottom: 0;
+		right: 0; 
+		
+		p { 
+			color: #4d4d4d; 
+			font-weight: 400;
+			margin: 0 auto 15px;
+		}
+
+		.botaoDownload { margin: 0; }
+	}
+
+	&.max {
+		height: 200px;
+		
+		.icoMaterial {
+			display: flex;
+			align-items: center;
+			height: 200px;
+
+			.icoStatic {
+				height: 200px;
+			}
+		}
+		
+		.conteudoBloco {
+			height: 200px;
+			
+			.botaoDownload { margin: 0 0 10px; }
+		}
+
+	}
+
+	@media #{$bp-phone} {
+		border: solid 2px #a6a8ab;
+		height: auto;
+
+		.icoMaterial {
+			display: block;
+			height: 120px;
+			width: 100%;
+			margin: 0 auto;
+
+			.icoStatic { 
+				height: 100%;
+				width: 100%; 
+			}
+
+			canvas { height: 100% !important; width: 100% !important; max-width: 120px; }
+		}
+
+		.conteudoBloco {
+			border: 0;
+			position: relative;
+			margin: 0;
+			padding: 20px 0;
+			height: auto;
+			width: 100%;
+			left: 0;
+			text-align: center;
+
+			.botaoDownload { margin: 0 auto 10px; }
+		}
+
+		&.max {
+			border: solid 2px #a6a8ab;
+			height: auto;
+
+			.icoMaterial {
+				display: block;
+				height: 120px;
+				width: 100%;
+				margin: 0 auto;
+
+				.icoStatic { 
+					height: 100%;
+					width: 100%; 
+				}
+
+				canvas { height: 100% !important; width: 100% !important; max-width: 120px; }
+			}
+
+			.conteudoBloco {
+				border: 0;
+				position: relative;
+				padding: 20px 0;
+				margin: 0;
+				height: auto;
+				text-align: center;
+
+				.botaoDownload { margin: 0 auto 10px; }
+			}
+		}
+	}
+}

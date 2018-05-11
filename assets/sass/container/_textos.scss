@@ -1,0 +1,197 @@
+h1 {
+	color: #606060;
+	display: block;
+	font-family: 'Roboto Condensed', Arial, sans-serif;
+	font-size: 25px;
+    font-weight: 400;
+    line-height: 1.5em;
+	margin: 25px 0 0;
+	padding: 0;
+    white-space: nowrap;
+    text-transform: uppercase;
+    
+    .nomeModulo {
+        color: #853b5f;
+        font-family: 'Nunito Sans', Arial, sans-serif;
+        font-size: 35px;
+        font-weight: 700;
+        position: relative;
+
+        &::after {
+            color: #606060;
+            content: '-';
+            display: inline-block;
+            font-size: 25px;
+            margin: 0 6px;
+        }
+    }
+}
+
+h2 {
+    color: #000;
+    display: inline-block;
+    font-family: 'Nunito Sans', Arial, sans-serif;
+    font-size: 18px;
+	font-weight: 400;
+    line-height: 1.2;
+    margin: 0;
+    position: relative;
+
+    @include transition (all 0.3s);
+
+    .numAula { font-weight: 700; }
+    .nomeAula {
+        position: relative;
+
+        &::before {
+            content: '-';
+            display: inline-block;
+            margin: 0 8px;
+            position: relative;
+        }
+    }
+}
+
+h3 {
+	color: #064f8e;
+	display: block;
+	font-family: 'Nunito Sans', Arial, sans-serif;
+	font-size: 30px;
+	font-weight: 800;
+	position: relative;
+	text-align: center;
+	text-transform: uppercase;
+    margin: 0 0 50px 0;
+
+    @include transition (all 0.3s);
+    
+    &::before, &::after {
+	    border-top: solid 2px #853c60;
+        content: ' ';
+        display: inline-block;
+	    position: relative;
+	    top: -8px;
+        width: 50px; 
+    }
+
+    &::before { left: -20px; }
+    &::after { left: 20px; }
+}
+
+h4 {
+	display: block;
+	font-family: 'Nunito Sans', Arial, sans-serif;
+	font-size: 20px;
+	font-weight: 800;
+	line-height: 1.4;
+	margin: 0;
+	text-transform: uppercase;
+}
+h5 { color: #42C7BA; }
+
+p {
+	color: #000;
+	display: block;
+	font-family: 'Nunito Sans', Arial, sans-serif;
+	font-size: 18px;
+	font-weight: 300;
+	line-height: 1.5;
+    margin: 0 auto 30px;
+    padding: 0;
+
+    @include transition (all 0.3s);
+}
+
+ul {
+    margin-bottom: 30px;
+    
+    li {
+        color:#4D4D4D;
+        font-family: 'Dosis', sans-serif;
+        font-size: 19px; 
+        font-weight: 400;
+        list-style: none;
+        list-style-position: inside;
+        padding: 0 0 10px 20px;
+
+        &::before {
+            color: #4D4D4D;
+            content: "• ";
+            padding-right: 5px; 
+        }
+    }
+
+    &.links_auxiliares { 
+        padding: 0; 
+    
+        li {
+            display: block;
+            list-style: none;
+            list-style-type: none;
+            padding: 0;
+
+            a {
+                background-color: #2251A3;
+                border: 1px solid #F0EEEE;
+                color: #FFF;
+                display: block;	
+                height: 36px;
+                line-height: 36px;
+                margin: 0 0 1px;	
+                text-align: center;
+                text-decoration: none;
+            
+                @include transition(width 0.3s ease-in-out);
+
+                &.active,
+                &:hover { background-color: #19356A; }
+            }
+        }
+    }
+}
+
+ol {
+    li {
+        color:#4D4D4D;
+        counter-increment: foo; 
+        font-family: 'Dosis', sans-serif;
+        font-size: 19px; 
+        font-weight: 400;
+        list-style: none;
+        list-style-position: inside;
+        padding: 0 0 10px 20px;
+    
+        -webkit-text-stroke: .025em rgba(77,77,77,0.25);
+
+        &::before {
+            color: #4D4D4D;
+            content: counter(foo) ".";
+            padding-right: 5px;
+            text-align: right;
+        }
+    }
+}
+
+@media #{$bp-phone} {
+    a { font-size: 17px; word-wrap: break-word; }
+    
+    h2 { font-size: 15px; margin-top: 2px; }
+    h3 {
+        font-size: 24px;
+        margin: 0 0 35px 0;
+    
+        &::before, &::after { width: 20px;  }
+        &::before { left: -10px; }
+        &::after { left: 10px; }
+    }
+
+    p { font-size: 16px; }
+}
+
+@media #{$bp-minPhone} {
+    h3 {
+        font-size: 22px;
+
+        &::before, &::after { display: none; }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "curso": {
+		"modulo": "GGTI",
+        "titulo": "SEGURANÇA DA INFORMAÇÃO E CONTINUIDADE DO NEGÓCIO",
+        "logo": "images/logo_GGTI.png",
+		"template": "azul",
+		"cor": "",
+		"conteudo": {
+			"telas":[
+						{
+							"aula": "01",
+							"url":"t01.html",
+							"titulo":"Protocolos de segurança de informação"
+						},
+						{
+							"aula": "02",
+							"url":"t02.html",
+							"titulo":"Guia - Página 02"
+						},
+						{
+							"aula": "03",
+							"url":"t03.html",
+							"titulo":"Guia - Página 03"
+						},
+						{
+							"aula": "04",
+							"url":"t04.html",
+							"titulo":"Guia - Página 04"
+						}
+					]
+		}
+	}
+}
+
